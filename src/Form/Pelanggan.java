@@ -12,7 +12,7 @@ import koneksi.koneksi;
 
 /**
  *
- * @author Ahmad Nur Latif P
+ * @author Donny Saputra
  */
 public class Pelanggan extends javax.swing.JFrame {
 

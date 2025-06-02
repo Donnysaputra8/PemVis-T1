@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 /**
  *
- * @author Ahmad Nur Latif P
+ * @author Donny Saputra
  */
 public class Kasir extends javax.swing.JFrame {
 private Connection conn = new koneksi().connect();

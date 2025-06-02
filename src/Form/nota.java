@@ -17,7 +17,7 @@ public class nota extends javax.swing.JFrame {
     public nota() {
         initComponents();
         String KD = UserID.getUserLogin();
-        jLabel77.setText(KD);
+        jLabel66.setText(KD);
         kosong();
         aktif();
         autonumber();
@@ -27,7 +27,7 @@ public class nota extends javax.swing.JFrame {
 
     protected void nama() {
     try {
-        String sql = "SELECT * FROM tb_kasir WHERE id_kasir='" + jLabel66.getText() + "' AND nm_kasir='"+jLabel66.getText()+"'";
+        String sql = "SELECT * FROM tb_kasir WHERE id_kasir='" + jLabel66.getText() + "'AND nm_kasir='"+jLabel66.getText();
         Statement stat = conn.createStatement();
         ResultSet hasil = stat.executeQuery(sql);
 

@@ -8,7 +8,7 @@ package Form;
 
 /**
  *
- * @author Ahmad Nur Latif P
+ * @author Donny Saputra
  */
 public class Menu extends javax.swing.JFrame {
 
