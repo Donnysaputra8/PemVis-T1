@@ -28,20 +28,20 @@ public class Pelanggan extends javax.swing.JFrame {
         kosong();
         aktif();
         datatable();
-        alamat_pel.setLineWrap(true);
-        alamat_pel.setWrapStyleWord(true);
+        alamat.setLineWrap(true);
+        alamat.setWrapStyleWord(true);
     }
 
     protected void aktif() {
-        id_pel.requestFocus();
+        id_plgn.requestFocus();
     }
 
     protected void kosong() {
-        id_pel.setText("");
-        nama_pel.setText("");
-        jk_pel.clearSelection();
-        telp_pel.setText("");
-        alamat_pel.setText("");
+        id_plgn.setText("");
+        nm_plgn.setText("");
+        jenis.clearSelection();
+        telepon.setText("");
+        alamat.setText("");
     }
 
     protected void datatable() {
@@ -49,12 +49,12 @@ public class Pelanggan extends javax.swing.JFrame {
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = cari_text.getText();
         try {
-            String sql = "SELECT * FROM tb_pelanggan WHERE id_pel LIKE '%" + cariitem + "%' "
-                    + "OR nama_pel LIKE '%" + cariitem + "%' "
-                    + "OR jk_pel LIKE '%" + cariitem + "%' "
-                    + "OR telp_pel LIKE '%" + cariitem + "%' "
-                    + "OR alamat_pel LIKE '%" + cariitem + "%' "
-                    + "ORDER BY id_pel ASC";
+            String sql = "SELECT * FROM tb_pelanggan WHERE id_plgn LIKE '%" + cariitem + "%' "
+                    + "OR nm_plgn LIKE '%" + cariitem + "%' "
+                    + "OR jenis LIKE '%" + cariitem + "%' "
+                    + "OR telepon LIKE '%" + cariitem + "%' "
+                    + "OR alamat LIKE '%" + cariitem + "%' "
+                    + "ORDER BY id_plgn ASC";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
@@ -82,19 +82,20 @@ public class Pelanggan extends javax.swing.JFrame {
     private void initComponents() {
 
         jk_pel = new javax.swing.ButtonGroup();
+        jenis = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nama_pel = new javax.swing.JTextField();
-        id_pel = new javax.swing.JTextField();
+        nm_plgn = new javax.swing.JTextField();
+        id_plgn = new javax.swing.JTextField();
         rlaki = new javax.swing.JRadioButton();
         rperempuan = new javax.swing.JRadioButton();
-        telp_pel = new javax.swing.JTextField();
+        telepon = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        alamat_pel = new javax.swing.JTextArea();
+        alamat = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_pelanggan = new javax.swing.JTable();
@@ -128,29 +129,35 @@ public class Pelanggan extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Alamat");
 
-        nama_pel.addActionListener(new java.awt.event.ActionListener() {
+        nm_plgn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nama_pelActionPerformed(evt);
+                nm_plgnActionPerformed(evt);
             }
         });
 
-        id_pel.addActionListener(new java.awt.event.ActionListener() {
+        id_plgn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_pelActionPerformed(evt);
+                id_plgnActionPerformed(evt);
             }
         });
 
-        jk_pel.add(rlaki);
+        jenis.add(rlaki);
         rlaki.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rlaki.setText("Laki-Laki");
 
-        jk_pel.add(rperempuan);
+        jenis.add(rperempuan);
         rperempuan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rperempuan.setText("Perempuan");
 
-        alamat_pel.setColumns(20);
-        alamat_pel.setRows(5);
-        jScrollPane1.setViewportView(alamat_pel);
+        telepon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teleponActionPerformed(evt);
+            }
+        });
+
+        alamat.setColumns(20);
+        alamat.setRows(5);
+        jScrollPane1.setViewportView(alamat);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Data Pelanggan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -172,6 +179,11 @@ public class Pelanggan extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table_pelanggan);
 
+        cari_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cari_textActionPerformed(evt);
+            }
+        });
         cari_text.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cari_textKeyPressed(evt);
@@ -277,9 +289,9 @@ public class Pelanggan extends javax.swing.JFrame {
                                 .addComponent(rlaki)
                                 .addGap(18, 18, 18)
                                 .addComponent(rperempuan))
-                            .addComponent(id_pel)
-                            .addComponent(nama_pel)
-                            .addComponent(telp_pel)
+                            .addComponent(id_plgn)
+                            .addComponent(nm_plgn)
+                            .addComponent(telepon)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -315,15 +327,15 @@ public class Pelanggan extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(id_pel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(id_plgn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(nama_pel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nm_plgn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rlaki)
                             .addComponent(rperempuan))
                         .addGap(33, 33, 33)
-                        .addComponent(telp_pel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(telepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
@@ -342,10 +354,10 @@ public class Pelanggan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean idSudahTerdaftar(String id_pel) {
-        String sql = "SELECT id_pel FROM tb_pelanggan WHERE id_pel = ?";
+    private boolean idSudahTerdaftar(String id_plgn) {
+        String sql = "SELECT id_plgn FROM tb_pelanggan WHERE id_plgn = ?";
         try (PreparedStatement stat = conn.prepareStatement(sql)) {
-            stat.setString(1, id_pel);
+            stat.setString(1, id_plgn);
             ResultSet hasil = stat.executeQuery();
             return hasil.next(); // Mengembalikan true jika ID ditemukan di database
         } catch (SQLException e) {
@@ -353,32 +365,32 @@ public class Pelanggan extends javax.swing.JFrame {
             return false; // Mengembalikan false jika terjadi kesalahan (anggap ID tidak terdaftar)
         }
     }
-    private void nama_pelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_pelActionPerformed
+    private void nm_plgnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm_plgnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nama_pelActionPerformed
+    }//GEN-LAST:event_nm_plgnActionPerformed
 
-    private void id_pelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pelActionPerformed
+    private void id_plgnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_plgnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_id_pelActionPerformed
+    }//GEN-LAST:event_id_plgnActionPerformed
 
     private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
     dispose();
     }//GEN-LAST:event_bkeluarActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-        String id_pelangganText = id_pel.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
-        String namaText = nama_pel.getText().trim();
-        String hpText = telp_pel.getText().trim();
-        String alamatText = alamat_pel.getText().trim();
-        if (id_pelangganText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || alamatText.isEmpty()) {
+        String id_plgnangganText = id_plgn.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
+        String namaText = nm_plgn.getText().trim();
+        String hpText = telepon.getText().trim();
+        String alamatText = alamat.getText().trim();
+        if (id_plgnangganText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || alamatText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua kolom harus diisi.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (id_pelangganText.length() > 10) {
+        if (id_plgnangganText.length() > 10) {
             JOptionPane.showMessageDialog(this, "ID Pelanggan harus terdiri dari 10 digit.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (idSudahTerdaftar(id_pelangganText)) {
+        if (idSudahTerdaftar(id_plgnangganText)) {
             JOptionPane.showMessageDialog(this, "ID Pelanggan sudah terdaftar.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -396,7 +408,7 @@ public class Pelanggan extends javax.swing.JFrame {
         String sql = "insert into tb_pelanggan values(?,?,?,?,?)";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, id_pelangganText);
+            stat.setString(1, id_plgnangganText);
             stat.setString(2, namaText);
             stat.setString(3, jenis);
             stat.setString(4, hpText);
@@ -413,15 +425,15 @@ public class Pelanggan extends javax.swing.JFrame {
     }//GEN-LAST:event_bsimpanActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
-        String id_pelangganText = id_pel.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
-        String namaText = nama_pel.getText().trim();
-        String hpText = telp_pel.getText().trim();
-        String alamatText = alamat_pel.getText().trim();
-        if (id_pelangganText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || alamatText.isEmpty()) {
+        String id_plgnangganText = id_plgn.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
+        String namaText = nm_plgn.getText().trim();
+        String hpText = telepon.getText().trim();
+        String alamatText = alamat.getText().trim();
+        if (id_plgnangganText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || alamatText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua kolom harus diisi.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (id_pelangganText.length() > 10) {
+        if (id_plgnangganText.length() > 10) {
             JOptionPane.showMessageDialog(this, "ID Pelanggan harus terdiri dari 10 digit.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -436,14 +448,14 @@ public class Pelanggan extends javax.swing.JFrame {
         } else if (rperempuan.isSelected()) {
             jenis = "Perempuan";
         }
-        String sql = "UPDATE tb_pelanggan set nama_pel=?,jk_pel=?,telp_pel=?,alamat_pel=? where id_pel=?" ;
+        String sql = "UPDATE tb_pelanggan set nm_plgn=?,jenis=?,telepon=?,alamat=? where id_plgn=?" ;
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, namaText);
             stat.setString(2, jenis);
             stat.setString(3, hpText);
             stat.setString(4, alamatText);
-            stat.setString(5, id_pelangganText);
+            stat.setString(5, id_plgnangganText);
 
             int rowsUpdated = stat.executeUpdate();
             if (rowsUpdated > 0) {
@@ -460,7 +472,7 @@ public class Pelanggan extends javax.swing.JFrame {
     }//GEN-LAST:event_bubahActionPerformed
 
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
-    String idPelanggan = id_pel.getText().trim();
+    String idPelanggan = id_plgn.getText().trim();
         if (idPelanggan.isEmpty()) {
             JOptionPane.showMessageDialog(this, "ID Pelanggan belum diisi.", "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
@@ -471,7 +483,7 @@ public class Pelanggan extends javax.swing.JFrame {
         }
         int ok = JOptionPane.showConfirmDialog(null, "Apakah benar ingin dihapus?", "Peringatan!", JOptionPane.YES_NO_OPTION);
         if (ok == 0) {
-            String sql = "delete from tb_pelanggan where id_pel='" + id_pel.getText() + "'";
+            String sql = "delete from tb_pelanggan where id_plgn='" + id_plgn.getText() + "'";
             try {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
@@ -508,20 +520,28 @@ public class Pelanggan extends javax.swing.JFrame {
         String d = table_pelanggan.getValueAt(bar, 3).toString();
         String e = table_pelanggan.getValueAt(bar, 4).toString();
 
-        id_pel.setText(a);
-        nama_pel.setText(b);
+        id_plgn.setText(a);
+        nm_plgn.setText(b);
         if ("Laki-Laki".equals(c)) {
             rlaki.setSelected(true);
         } else {
             rperempuan.setSelected(true);
         }
-        telp_pel.setText(d);
-        alamat_pel.setText(e);
+        telepon.setText(d);
+        alamat.setText(e);
     }//GEN-LAST:event_table_pelangganMouseClicked
 
     private void bcariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bcariMouseClicked
    
     }//GEN-LAST:event_bcariMouseClicked
+
+    private void cari_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cari_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cari_textActionPerformed
+
+    private void teleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teleponActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teleponActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,7 +581,7 @@ public class Pelanggan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea alamat_pel;
+    private javax.swing.JTextArea alamat;
     private javax.swing.JButton bbatal;
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
@@ -569,7 +589,7 @@ public class Pelanggan extends javax.swing.JFrame {
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
     private javax.swing.JTextField cari_text;
-    private javax.swing.JTextField id_pel;
+    private javax.swing.JTextField id_plgn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -579,11 +599,12 @@ public class Pelanggan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.ButtonGroup jenis;
     private javax.swing.ButtonGroup jk_pel;
-    private javax.swing.JTextField nama_pel;
+    private javax.swing.JTextField nm_plgn;
     private javax.swing.JRadioButton rlaki;
     private javax.swing.JRadioButton rperempuan;
     private javax.swing.JTable table_pelanggan;
-    private javax.swing.JTextField telp_pel;
+    private javax.swing.JTextField telepon;
     // End of variables declaration//GEN-END:variables
 }

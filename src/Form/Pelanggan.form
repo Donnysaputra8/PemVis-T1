@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="jk_pel">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="jenis">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -54,9 +56,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="rperempuan" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="id_pel" max="32767" attributes="0"/>
-                          <Component id="nama_pel" max="32767" attributes="0"/>
-                          <Component id="telp_pel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="id_plgn" max="32767" attributes="0"/>
+                          <Component id="nm_plgn" max="32767" attributes="0"/>
+                          <Component id="telepon" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -102,16 +104,16 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="id_pel" min="-2" max="-2" attributes="0"/>
+                      <Component id="id_plgn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="nama_pel" min="-2" max="-2" attributes="0"/>
+                      <Component id="nm_plgn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rlaki" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rperempuan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="telp_pel" min="-2" max="-2" attributes="0"/>
+                      <Component id="telepon" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="113" max="-2" attributes="0"/>
                   </Group>
@@ -183,20 +185,20 @@
         <Property name="text" type="java.lang.String" value="Alamat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nama_pel">
+    <Component class="javax.swing.JTextField" name="nm_plgn">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nama_pelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nm_plgnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="id_pel">
+    <Component class="javax.swing.JTextField" name="id_plgn">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_pelActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_plgnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rlaki">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="jk_pel"/>
+          <ComponentRef name="jenis"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -207,7 +209,7 @@
     <Component class="javax.swing.JRadioButton" name="rperempuan">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="jk_pel"/>
+          <ComponentRef name="jenis"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -215,7 +217,10 @@
         <Property name="text" type="java.lang.String" value="Perempuan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="telp_pel">
+    <Component class="javax.swing.JTextField" name="telepon">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teleponActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -224,7 +229,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="alamat_pel">
+        <Component class="javax.swing.JTextArea" name="alamat">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -333,6 +338,7 @@
         </Container>
         <Component class="javax.swing.JTextField" name="cari_text">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cari_textActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cari_textKeyPressed"/>
           </Events>
         </Component>

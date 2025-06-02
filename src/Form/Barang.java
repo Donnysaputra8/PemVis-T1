@@ -20,7 +20,7 @@ public class Barang extends javax.swing.JFrame {
 
     protected void aktif() {
         kd_brg.requestFocus();
-        jbarang.setSelectedItem(null);
+        jenis.setSelectedItem(null);
     }
 
     protected void kosong() {
@@ -29,7 +29,7 @@ public class Barang extends javax.swing.JFrame {
         hargajual.setText("");
         hargabeli.setText("");
         bcari.setText("");
-        jbarang.setSelectedItem(null);
+        jenis.setSelectedItem(null);
     }
     
     /**
@@ -51,7 +51,7 @@ public class Barang extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         hargajual = new javax.swing.JTextField();
-        jbarang = new javax.swing.JComboBox();
+        jenis = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         cari_text = new javax.swing.JTextField();
         bcari = new javax.swing.JButton();
@@ -96,7 +96,7 @@ public class Barang extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Harga Jual");
 
-        jbarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Makanan", "Minuman" }));
+        jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Makanan", "Minuman" }));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabel Barang"));
 
@@ -230,7 +230,7 @@ public class Barang extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbarang, 0, 144, Short.MAX_VALUE)))
+                                .addComponent(jenis, 0, 144, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bsimpan, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -266,7 +266,7 @@ public class Barang extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jbarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -340,13 +340,11 @@ protected void datatable() {
         String c = table_barang.getValueAt(bar, 2).toString();
         String d = table_barang.getValueAt(bar, 3).toString();
         String e = table_barang.getValueAt(bar, 4).toString();
-        String f = table_barang.getValueAt(bar, 5).toString();
-        String g = table_barang.getValueAt(bar, 6).toString();
         kd_brg.setText(a);
         nm_brg.setText(b);
-        jbarang.setSelectedItem(c);
-        hargajual.setText(d);
-        hargabeli.setText(e);
+        jenis.setSelectedItem(c);
+        hargabeli.setText(d);
+        hargajual.setText(e);
     }//GEN-LAST:event_table_barangMouseClicked
 
     private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
@@ -360,9 +358,9 @@ protected void datatable() {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, kd_brg.getText());
             stat.setString(2, nm_brg.getText());
-            stat.setString(3, jbarang.getSelectedItem().toString());
-            stat.setString(4, hargajual.getText());
-            stat.setString(5, hargabeli.getText());
+            stat.setString(3, jenis.getSelectedItem().toString());
+            stat.setString(4, hargabeli.getText());
+            stat.setString(5, hargajual.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
             kosong();
@@ -379,12 +377,12 @@ protected void datatable() {
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         try {
-        String sql = "UPDATE barang SET nm_brg=?, jbarang=?, hargabeli=?, hargajual=? WHERE kd_brg='" + kd_brg.getText() + "'";
+        String sql = "UPDATE barang SET nm_brg=?, jenis=?, hargabeli=?, hargajual=? WHERE kd_brg='" + kd_brg.getText() + "'";
         PreparedStatement stat = conn.prepareStatement(sql);
         stat.setString(1, nm_brg.getText());
-        stat.setString(2, jbarang.getSelectedItem().toString());
-        stat.setString(3, hargajual.getText());
-        stat.setString(4, hargabeli.getText());
+        stat.setString(2, jenis.getSelectedItem().toString());
+        stat.setString(3, hargabeli.getText());
+        stat.setString(4, hargajual.getText());
         stat.executeUpdate();
         JOptionPane.showMessageDialog(null, "Data berhasil diubah");
         kosong();
@@ -398,7 +396,7 @@ protected void datatable() {
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
             int ok = JOptionPane.showConfirmDialog(null, "Hapus?", "Konfirmasi Dialog", JOptionPane.YES_NO_OPTION);
         if (ok == 0) {
-            String sql = "DELETE FROM barang WHERE kdbrg='" + kd_brg.getText() + "'";
+            String sql = "DELETE FROM barang WHERE kd_brg='" + kd_brg.getText() + "'";
             try {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
@@ -465,7 +463,7 @@ protected void datatable() {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JComboBox jbarang;
+    private javax.swing.JComboBox jenis;
     private javax.swing.JTextField kd_brg;
     private javax.swing.JTextField nm_brg;
     private javax.swing.JTable table_barang;

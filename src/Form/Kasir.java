@@ -25,8 +25,8 @@ private Connection conn = new koneksi().connect();
         kosong();
         aktif();
         datatable_kasir();
-        alamat_kasir.setLineWrap(true);
-        alamat_kasir.setWrapStyleWord(true);
+        alamat.setLineWrap(true);
+        alamat.setWrapStyleWord(true);
     }
 
     protected void aktif() {
@@ -35,12 +35,12 @@ private Connection conn = new koneksi().connect();
 
     protected void kosong() {
         id_kasir.setText("");
-        nama_kasir.setText("");
-        jk_kasir.clearSelection();
-        telp_kasir.setText("");
-        agama_kasir.setText("");
-        alamat_kasir.setText("");
-        password_kasir.setText("");
+        nm_kasir.setText("");
+        jenis_kelamin.clearSelection();
+        no_telepon.setText("");
+        agama.setText("");
+        alamat.setText("");
+        password.setText("");
     }
     
     protected void datatable_kasir() {
@@ -49,12 +49,12 @@ private Connection conn = new koneksi().connect();
         String cariitem = cari_text.getText();
         try {
             String sql = "SELECT * FROM tb_kasir WHERE id_kasir LIKE '%" + cariitem + "%' "
-                    + "OR nama_kasir LIKE '%" + cariitem + "%' "
-                    + "OR jk_kasir LIKE '%" + cariitem + "%' "
-                    + "OR telp_kasir LIKE '%" + cariitem + "%' "
-                    + "OR agama_kasir LIKE '%" + cariitem + "%' "
-                    + "OR alamat_kasir LIKE '%" + cariitem + "%' "
-                    + "OR password_kasir LIKE '%" + cariitem + "%' "
+                    + "OR nm_kasir LIKE '%" + cariitem + "%' "
+                    + "OR jenis_kelamin LIKE '%" + cariitem + "%' "
+                    + "OR no_telepon LIKE '%" + cariitem + "%' "
+                    + "OR agama LIKE '%" + cariitem + "%' "
+                    + "OR alamat LIKE '%" + cariitem + "%' "
+                    + "OR password LIKE '%" + cariitem + "%' "
                     + "ORDER BY id_kasir ASC";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
@@ -86,11 +86,12 @@ private Connection conn = new koneksi().connect();
 
         jk_kasir = new javax.swing.ButtonGroup();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jenis_kelamin = new javax.swing.ButtonGroup();
         rlaki = new javax.swing.JRadioButton();
         rperempuan = new javax.swing.JRadioButton();
-        telp_kasir = new javax.swing.JTextField();
+        no_telepon = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        alamat_kasir = new javax.swing.JTextArea();
+        alamat = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_kasir = new javax.swing.JTable();
@@ -105,28 +106,28 @@ private Connection conn = new koneksi().connect();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nama_kasir = new javax.swing.JTextField();
+        nm_kasir = new javax.swing.JTextField();
         bbatal = new javax.swing.JButton();
         bkeluar = new javax.swing.JButton();
         id_kasir = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        agama_kasir = new javax.swing.JTextField();
+        agama = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        password_kasir = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jk_kasir.add(rlaki);
+        jenis_kelamin.add(rlaki);
         rlaki.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rlaki.setText("Laki-Laki");
 
-        jk_kasir.add(rperempuan);
+        jenis_kelamin.add(rperempuan);
         rperempuan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rperempuan.setText("Perempuan");
 
-        alamat_kasir.setColumns(20);
-        alamat_kasir.setRows(5);
-        jScrollPane1.setViewportView(alamat_kasir);
+        alamat.setColumns(20);
+        alamat.setRows(5);
+        jScrollPane1.setViewportView(alamat);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "DATA KASIR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -189,7 +190,7 @@ private Connection conn = new koneksi().connect();
                     .addComponent(cari_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bcari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -229,15 +230,15 @@ private Connection conn = new koneksi().connect();
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Nama ");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("No. Telepon ");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Alamat ");
 
-        nama_kasir.addActionListener(new java.awt.event.ActionListener() {
+        nm_kasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nama_kasirActionPerformed(evt);
+                nm_kasirActionPerformed(evt);
             }
         });
 
@@ -262,10 +263,10 @@ private Connection conn = new koneksi().connect();
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Agama ");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Password ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,11 +282,11 @@ private Connection conn = new koneksi().connect();
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(agama_kasir, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                                .addComponent(agama, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nama_kasir))
+                                .addComponent(nm_kasir))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -293,7 +294,7 @@ private Connection conn = new koneksi().connect();
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(telp_kasir))
+                                .addComponent(no_telepon))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -316,7 +317,7 @@ private Connection conn = new koneksi().connect();
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(password_kasir))
+                                    .addComponent(password))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -336,46 +337,43 @@ private Connection conn = new koneksi().connect();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel8)
-                                        .addComponent(password_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel5)
-                                        .addComponent(telp_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(id_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(nama_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(rlaki)
-                                    .addComponent(rperempuan))
-                                .addGap(0, 37, Short.MAX_VALUE)))
-                        .addGap(36, 36, 36))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(id_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(nm_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(rlaki)
+                            .addComponent(rperempuan))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(no_telepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(agama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(agama_kasir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bsimpan)
-                    .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bkeluar))
-                .addGap(33, 33, 33)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bsimpan)
+                            .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bkeluar))))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -404,16 +402,16 @@ private Connection conn = new koneksi().connect();
         String g = table_kasir.getValueAt(bar, 6).toString();
 
         id_kasir.setText(a);
-        nama_kasir.setText(b);
+        nm_kasir.setText(b);
         if ("Laki-Laki".equals(c)) {
             rlaki.setSelected(true);
         } else {
             rperempuan.setSelected(true);
         }
-        telp_kasir.setText(d);
-        agama_kasir.setText(e);
-        alamat_kasir.setText(f);
-        password_kasir.setText(g);
+        no_telepon.setText(d);
+        agama.setText(e);
+        alamat.setText(f);
+        password.setText(g);
     }//GEN-LAST:event_table_kasirMouseClicked
 
     private void cari_textKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cari_textKeyPressed
@@ -428,12 +426,12 @@ private Connection conn = new koneksi().connect();
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
         String id_kasirText = id_kasir.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
-        String namaText = nama_kasir.getText().trim();
-        String hpText = telp_kasir.getText().trim();
-        String agamaText = agama_kasir.getText().trim();
-        String alamatText = alamat_kasir.getText().trim();
-        String passText = password_kasir.getText().trim();
-        if (id_kasirText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || agamaText.isEmpty() || alamatText.isEmpty() || passText.isEmpty()) {
+        String namaText = nm_kasir.getText().trim();
+        String notelText = no_telepon.getText().trim();
+        String agamaText = agama.getText().trim();
+        String alamatText = alamat.getText().trim();
+        String passText = password.getText().trim();
+        if (id_kasirText.isEmpty() || namaText.isEmpty() || notelText.isEmpty() || agamaText.isEmpty() || alamatText.isEmpty() || passText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua kolom harus diisi.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -462,7 +460,7 @@ private Connection conn = new koneksi().connect();
             stat.setString(1, id_kasirText);
             stat.setString(2, namaText);
             stat.setString(3, jenis);
-            stat.setString(4, hpText);
+            stat.setString(4, notelText);
             stat.setString(5, agamaText);
             stat.setString(6, alamatText);
             stat.setString(7, passText);
@@ -479,12 +477,12 @@ private Connection conn = new koneksi().connect();
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         String id_kasirText = id_kasir.getText().trim(); // Trim untuk menghapus spasi di awal dan akhir
-        String namaText = nama_kasir.getText().trim();
-        String hpText = telp_kasir.getText().trim();
-        String agamaText = agama_kasir.getText().trim();
-        String alamatText = alamat_kasir.getText().trim();
-        String passText = password_kasir.getText().trim();
-        if (id_kasirText.isEmpty() || namaText.isEmpty() || hpText.isEmpty() || agamaText.isEmpty() || alamatText.isEmpty() || passText.isEmpty()) {
+        String namaText = nm_kasir.getText().trim();
+        String notelText = no_telepon.getText().trim();
+        String agamaText = agama.getText().trim();
+        String alamatText = alamat.getText().trim();
+        String passText = password.getText().trim();
+        if (id_kasirText.isEmpty() || namaText.isEmpty() || notelText.isEmpty() || agamaText.isEmpty() || alamatText.isEmpty() || passText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Semua kolom harus diisi.", "Kesalahan", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -503,12 +501,12 @@ private Connection conn = new koneksi().connect();
         } else if (rperempuan.isSelected()) {
             jenis = "Perempuan";
         }
-        String sql = "UPDATE tb_kasir set nama_kasir=?,jk_kasir=?,telp_kasir=?,agama_kasir=?,alamat_kasir=?,password_kasir=? where id_kasir=?" ;
+        String sql = "UPDATE tb_kasir set nm_kasir=?,jenis_kelamin=?,no_telepon=?,agama=?,alamat=?,password=? where id_kasir=?" ;
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, namaText);
             stat.setString(2, jenis);
-            stat.setString(3, hpText);
+            stat.setString(3, notelText);
             stat.setString(4, agamaText);
             stat.setString(5, alamatText);
             stat.setString(6, passText);
@@ -554,9 +552,9 @@ private Connection conn = new koneksi().connect();
         }
     }//GEN-LAST:event_bhapusActionPerformed
 
-    private void nama_kasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_kasirActionPerformed
+    private void nm_kasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nm_kasirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nama_kasirActionPerformed
+    }//GEN-LAST:event_nm_kasirActionPerformed
 
     private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
         kosong();
@@ -612,8 +610,8 @@ private Connection conn = new koneksi().connect();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField agama_kasir;
-    private javax.swing.JTextArea alamat_kasir;
+    private javax.swing.JTextField agama;
+    private javax.swing.JTextArea alamat;
     private javax.swing.JButton bbatal;
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
@@ -634,12 +632,13 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.ButtonGroup jenis_kelamin;
     private javax.swing.ButtonGroup jk_kasir;
-    private javax.swing.JTextField nama_kasir;
-    private javax.swing.JTextField password_kasir;
+    private javax.swing.JTextField nm_kasir;
+    private javax.swing.JTextField no_telepon;
+    private javax.swing.JTextField password;
     private javax.swing.JRadioButton rlaki;
     private javax.swing.JRadioButton rperempuan;
     private javax.swing.JTable table_kasir;
-    private javax.swing.JTextField telp_kasir;
     // End of variables declaration//GEN-END:variables
 }
